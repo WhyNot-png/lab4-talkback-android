@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Стенд ЛР4 — исправленная версия</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0 auto; max-width: 640px; padding: 16px; line-height: 1.5; font-size: 18px; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:6px; background:#dcf5e3; font-size:14px; }
+  .row { display:flex; gap:8px; align-items:center; }
+  input[type=search] { flex:1; font-size:18px; padding:10px; }
+  button { font-size:18px; padding:10px 14px; min-width:48px; min-height:48px; }
+  .icon-btn { display:inline-flex; align-items:center; justify-content:center; }
+  label { display:block; margin:12px 0; }
+  input[type=range] { width:100%; }
+  dialog { max-width: 90vw; border-radius: 12px; }
+  #log { background:#f4f4f4; padding:8px; font-size:12px; white-space:pre-wrap; min-height:60px; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Магазин «Тест» — стенд ЛР 4</h1>
+    <p class="badge">Исправленная версия: у кнопки поиска есть имя</p>
+  </header>
+  <main>
+    <div>
+      <!-- БАРЬЕР 1 (оставлен намеренно в обеих версиях): текст рядом с полем НЕ связан с ним
+           (нет <label for>, aria-label, aria-labelledby, placeholder и title) -->
+      <span>Поиск по каталогу</span>
+      <div class="row">
+        <input type="search" id="q" autocomplete="off">
+        <!-- ИСПРАВЛЕНО: имя задано через aria-label, декоративный SVG скрыт через aria-hidden -->
+        <button type="button" id="search-btn" class="icon-btn" aria-label="Найти"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="14.5" y1="14.5" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></button>
+      </div>
+      <p id="result" role="status"></p>
+    </div>
+
+    <h2>Настройки</h2>
+    <label><input type="checkbox" id="news"> Получать новости о скидках</label>
+    <label for="volume">Громкость уведомлений</label>
+    <input type="range" id="volume" min="0" max="100" step="10" value="50" aria-describedby="volume-out">
+    <output id="volume-out" for="volume">50%</output>
+
+    <p><button type="button" id="open-dialog">Открыть условия акции</button></p>
+
+    <dialog id="dlg" aria-labelledby="dlg-title">
+      <h2 id="dlg-title">Условия акции</h2>
+      <p>Скидка 10% действует на первый заказ до конца месяца.</p>
+      <button type="button" id="close-dialog">Закрыть</button>
+    </dialog>
+
+  <section>
+    <h2>Раздел 1. Доставка</h2>
+    <p>Заказы доставляются в течение трёх рабочих дней. Стоимость зависит от региона и веса посылки.</p>
+    <p>Этот текст нужен, чтобы страница была длиннее экрана и её приходилось прокручивать двумя пальцами. Для навигации по заголовкам выберите в меню TalkBack «Заголовки» и смахивайте вниз или вверх.</p>
+  </section>
+  <section>
+    <h2>Раздел 2. Оплата</h2>
+    <p>Принимаются банковские карты и оплата при получении. Чек отправляется на электронную почту.</p>
+    <p>Этот текст нужен, чтобы страница была длиннее экрана и её приходилось прокручивать двумя пальцами. Для навигации по заголовкам выберите в меню TalkBack «Заголовки» и смахивайте вниз или вверх.</p>
+  </section>
+  <section>
+    <h2>Раздел 3. Возврат</h2>
+    <p>Товар можно вернуть в течение 14 дней, если сохранены упаковка и чек.</p>
+    <p>Этот текст нужен, чтобы страница была длиннее экрана и её приходилось прокручивать двумя пальцами. Для навигации по заголовкам выберите в меню TalkBack «Заголовки» и смахивайте вниз или вверх.</p>
+  </section>
+  <section>
+    <h2>Раздел 4. Гарантия</h2>
+    <p>На всю технику действует гарантия производителя не менее одного года.</p>
+    <p>Этот текст нужен, чтобы страница была длиннее экрана и её приходилось прокручивать двумя пальцами. Для навигации по заголовкам выберите в меню TalkBack «Заголовки» и смахивайте вниз или вверх.</p>
+  </section>
+  <section>
+    <h2>Раздел 5. Контакты</h2>
+    <p>Служба поддержки работает ежедневно с 9:00 до 21:00 по московскому времени.</p>
+    <p>Этот текст нужен, чтобы страница была длиннее экрана и её приходилось прокручивать двумя пальцами. Для навигации по заголовкам выберите в меню TalkBack «Заголовки» и смахивайте вниз или вверх.</p>
+  </section>
+  <section>
+    <h2>Раздел 6. Вакансии</h2>
+    <p>Мы ищем специалистов по доступности интерфейсов и тестированию.</p>
+    <p>Этот текст нужен, чтобы страница была длиннее экрана и её приходилось прокручивать двумя пальцами. Для навигации по заголовкам выберите в меню TalkBack «Заголовки» и смахивайте вниз или вверх.</p>
+  </section>
+  </main>
+  <footer>
+    <h2>Журнал событий DOM</h2>
+    <p>События DOM, а не события TalkBack. Дублируются в консоль (chrome://inspect).</p>
+    <button type="button" id="clear-log">Очистить журнал</button>
+    <pre id="log"></pre>
+  </footer>
+<script src="common.js"></script>
+</body>
+</html>
